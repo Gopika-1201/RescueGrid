@@ -237,13 +237,13 @@ export default function Survivors({ missionId = "ALPHA-7" }: { missionId?: strin
         {/* Table List (2 Cols) */}
         <div className="lg:col-span-2 overflow-y-auto rounded-xl border border-slate-800 bg-card/40">
           <div className="divide-y divide-slate-800/80 font-mono text-xs">
-            {filteredSurvivors.map((s) => {
+            {filteredSurvivors.map((s, idx) => {
               const isCritical = s.priority === "CRITICAL"
               const isHigh = s.priority === "HIGH"
 
               return (
                 <div
-                  key={s.id}
+                  key={`${s.id}-${s.tracking_id ?? ''}-${idx}`}
                   onClick={() => setSelectedSurvivor(s)}
                   className={`p-4 hover:bg-slate-800/40 cursor-pointer transition-colors flex flex-col sm:flex-row justify-between sm:items-center gap-3 ${
                     selectedSurvivor?.id === s.id ? "bg-slate-800/60 border-l-4 border-cyan-500" : ""

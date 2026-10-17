@@ -528,8 +528,8 @@ export default function AIAnalysis({ missionId = "ALPHA-7" }: { missionId?: stri
             </CardHeader>
             <CardContent className="p-0 flex-1 overflow-y-auto max-h-[240px]">
               <div className="divide-y divide-slate-800/60 font-mono text-xs">
-                {detections.map((det) => (
-                  <div key={det.detection_id} className="p-2.5 hover:bg-slate-800/30 flex justify-between items-center transition-colors">
+                {detections.map((det, idx) => (
+                  <div key={`${det.detection_id}-${idx}`} className="p-2.5 hover:bg-slate-800/30 flex justify-between items-center transition-colors">
                     <div>
                       <div className="flex items-center gap-1.5">
                         <span className="text-cyan-400 font-bold">{det.survivor_id || det.detection_id}</span>
@@ -568,12 +568,12 @@ export default function AIAnalysis({ missionId = "ALPHA-7" }: { missionId?: stri
             </CardHeader>
             <CardContent className="p-0 flex-1 overflow-y-auto max-h-[320px]">
               <div className="divide-y divide-slate-800">
-                {survivors.map((surv) => {
+                {survivors.map((surv, idx) => {
                   const isCritical = surv.priority === "CRITICAL"
                   const isHigh = surv.priority === "HIGH"
 
                   return (
-                    <div key={surv.survivor_id} className="p-3 hover:bg-slate-800/30 transition-colors">
+                    <div key={`${surv.survivor_id}-${idx}`} className="p-3 hover:bg-slate-800/30 transition-colors">
                       <div className="flex justify-between items-start mb-1.5">
                         <div className="flex items-center gap-2">
                           <span className="font-bold font-mono text-sm text-white">

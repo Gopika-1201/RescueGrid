@@ -122,9 +122,9 @@ export default function LiveMap({
         />
 
         {/* Hazard Danger Circles */}
-        {activeHazards.map((h) => (
+        {activeHazards.map((h, idx) => (
           <Circle
-            key={h.id}
+            key={`hazard-circle-${h.id}-${idx}`}
             center={[h.lat, h.lng]}
             pathOptions={{
               fillColor: h.severity === "CRITICAL" ? "#ef4444" : "#f59e0b",
@@ -154,8 +154,8 @@ export default function LiveMap({
         />
 
         {/* Hazard Markers */}
-        {activeHazards.map((h) => (
-          <Marker key={`marker-${h.id}`} position={[h.lat, h.lng]} icon={hazardIcon}>
+        {activeHazards.map((h, idx) => (
+          <Marker key={`hazard-marker-${h.id}-${idx}`} position={[h.lat, h.lng]} icon={hazardIcon}>
             <Popup>
               <div className="text-slate-900 font-bold">{h.id}</div>
               <div className="text-amber-700 font-medium text-xs">{h.type}</div>
@@ -165,8 +165,8 @@ export default function LiveMap({
         ))}
 
         {/* Rescue Team Markers */}
-        {activeTeams.map((team) => (
-          <Marker key={team.id} position={[team.lat, team.lng]} icon={rescueTeamIcon}>
+        {activeTeams.map((team, idx) => (
+          <Marker key={`team-${team.id}-${idx}`} position={[team.lat, team.lng]} icon={rescueTeamIcon}>
             <Popup>
               <div className="text-slate-900 font-bold">RESCUE ASSET: {team.name}</div>
               <div className="text-cyan-700 text-xs font-semibold">STATUS: {team.status}</div>
@@ -175,8 +175,8 @@ export default function LiveMap({
         ))}
 
         {/* Survivor Markers */}
-        {activeSurvivors.map((s) => (
-          <Marker key={s.id} position={[s.lat, s.lng]} icon={createSurvivorIcon(s.priority)}>
+        {activeSurvivors.map((s, idx) => (
+          <Marker key={`surv-${s.id}-${idx}`} position={[s.lat, s.lng]} icon={createSurvivorIcon(s.priority)}>
             <Popup>
               <div className="text-slate-900 font-bold">Survivor {s.id}</div>
               <div className="flex items-center gap-1 mt-1">

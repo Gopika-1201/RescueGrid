@@ -326,9 +326,9 @@ export default function Routes({ missionId = "ALPHA-7" }: { missionId?: string }
             />
 
             {/* Hazard Danger Circles */}
-            {hazards.map((h) => (
+            {hazards.map((h, idx) => (
               <Circle
-                key={`h-circ-${h.id}`}
+                key={`h-circ-${h.id}-${idx}`}
                 center={[h.lat, h.lng]}
                 radius={h.radius_meters || 150}
                 pathOptions={{

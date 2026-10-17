@@ -156,12 +156,12 @@ export default function Alerts({ missionId = "ALPHA-7" }: { missionId?: string }
 
       {/* Alert Feed */}
       <div className="flex-1 overflow-y-auto space-y-3 pr-1">
-        {filteredAlerts.map(alert => {
+        {filteredAlerts.map((alert, idx) => {
           const isCritical = alert.level === "CRITICAL"
 
           return (
             <Card
-              key={alert.id}
+              key={`${alert.id}-${idx}`}
               className={`border transition-all ${
                 alert.acknowledged
                   ? "bg-card/20 border-slate-800 opacity-70"

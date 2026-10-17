@@ -211,13 +211,13 @@ export default function Hazards({ missionId = "ALPHA-7" }: { missionId?: string 
         
         {/* Hazards List */}
         <div className="lg:col-span-2 overflow-y-auto space-y-3 pr-1">
-          {filteredHazards.map((h) => {
+          {filteredHazards.map((h, idx) => {
             const isCritical = h.severity === "CRITICAL"
             const isModelReal = h.is_real_ai && h.model_supported
 
             return (
               <Card
-                key={h.id}
+                key={`${h.id}-${idx}`}
                 onClick={() => setSelectedHazard(h)}
                 className={`bg-card/40 border-slate-800 cursor-pointer hover:bg-slate-800/40 transition-all ${
                   selectedHazard?.id === h.id ? "border-amber-500 bg-slate-800/50" : ""

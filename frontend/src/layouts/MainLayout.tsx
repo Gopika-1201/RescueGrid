@@ -22,10 +22,10 @@ export default function MainLayout() {
       {/* Sidebar */}
       <aside className="w-64 border-r border-border bg-card flex flex-col">
         <div className="h-16 flex items-center px-6 border-b border-border">
-          <div className="flex items-center gap-2">
+          <Link to="/app" className="flex items-center gap-2 hover:opacity-90 transition-opacity">
             <Radio className="h-6 w-6 text-red-500 animate-pulse" />
             <span className="font-bold text-lg tracking-wider text-white">RESCUE<span className="text-red-500">GRID</span></span>
-          </div>
+          </Link>
         </div>
         
         <nav className="flex-1 overflow-y-auto py-4">

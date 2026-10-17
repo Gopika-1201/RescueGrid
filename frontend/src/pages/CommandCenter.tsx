@@ -356,8 +356,8 @@ export default function CommandCenter() {
             </CardHeader>
             <CardContent className="p-0 flex-1 overflow-y-auto max-h-[250px]">
               <div className="divide-y divide-slate-800 font-mono text-xs">
-                {mapSurvivors.slice(0, 4).map((s) => (
-                  <div key={s.id} className="p-3 hover:bg-slate-800/30 transition-colors">
+                {mapSurvivors.slice(0, 4).map((s, idx) => (
+                  <div key={`${s.id}-${idx}`} className="p-3 hover:bg-slate-800/30 transition-colors">
                     <div className="flex justify-between items-start mb-1">
                       <div className="font-bold text-cyan-400">ID: {s.id}</div>
                       <Badge className={s.priority === "CRITICAL" ? "bg-red-600 text-white text-[10px]" : "bg-amber-600 text-white text-[10px]"}>
@@ -393,8 +393,8 @@ export default function CommandCenter() {
             </CardHeader>
             <CardContent className="p-3 flex-1 overflow-y-auto max-h-[220px]">
               <div className="space-y-2.5 font-mono text-[11px]">
-                {feedEvents.map((evt) => (
-                  <div key={evt.id} className="flex items-start gap-2">
+                {feedEvents.map((evt, idx) => (
+                  <div key={`${evt.id}-${idx}`} className="flex items-start gap-2">
                     <span className="text-slate-500 text-[10px] whitespace-nowrap mt-0.5">{evt.time}</span>
                     <span className={
                       evt.type === "alert" 

@@ -3,7 +3,6 @@ import MainLayout from "@/layouts/MainLayout"
 import CommandCenter from "@/pages/CommandCenter"
 import Missions from "@/pages/Missions"
 import Reports from "@/pages/Reports"
-import Landing from "@/pages/Landing"
 import AIAnalysis from "@/pages/AIAnalysis"
 import IntelligenceMap from "@/pages/IntelligenceMap"
 import Survivors from "@/pages/Survivors"
@@ -16,7 +15,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Landing />} />
+        <Route path="/" element={<Navigate to="/app" replace />} />
         <Route path="/app" element={<MainLayout />}>
           <Route index element={<CommandCenter />} />
           <Route path="analysis" element={<AIAnalysis />} />
@@ -29,7 +28,7 @@ function App() {
           <Route path="reports" element={<Reports />} />
           <Route path="settings" element={<Settings />} />
         </Route>
-        <Route path="*" element={<Navigate to="/" />} />
+        <Route path="*" element={<Navigate to="/app" replace />} />
       </Routes>
     </BrowserRouter>
   )

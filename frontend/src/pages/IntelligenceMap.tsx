@@ -416,9 +416,9 @@ export default function IntelligenceMap({ missionId = "ALPHA-7" }: { missionId?:
             )}
 
             {/* Hazard Perimeters and Circles */}
-            {showHazards && hazards.map((h) => (
+            {showHazards && hazards.map((h, idx) => (
               <Circle
-                key={`circ-${h.id}`}
+                key={`circ-${h.id}-${idx}`}
                 center={[h.lat, h.lng]}
                 radius={h.radius_meters || 150}
                 pathOptions={{
@@ -443,9 +443,9 @@ export default function IntelligenceMap({ missionId = "ALPHA-7" }: { missionId?:
             ))}
 
             {/* Hazard Markers */}
-            {showHazards && hazards.map((h) => (
+            {showHazards && hazards.map((h, idx) => (
               <Marker
-                key={`haz-${h.id}`}
+                key={`haz-${h.id}-${idx}`}
                 position={[h.lat, h.lng]}
                 icon={createHazardIcon(h.severity)}
                 eventHandlers={{
@@ -497,9 +497,9 @@ export default function IntelligenceMap({ missionId = "ALPHA-7" }: { missionId?:
             )}
 
             {/* Rescue Team Markers */}
-            {showTeams && teams.map((team) => (
+            {showTeams && teams.map((team, idx) => (
               <Marker
-                key={`team-${team.id}`}
+                key={`team-${team.id}-${idx}`}
                 position={[team.lat, team.lng]}
                 icon={createTeamIcon(team.type)}
                 eventHandlers={{
@@ -519,9 +519,9 @@ export default function IntelligenceMap({ missionId = "ALPHA-7" }: { missionId?:
             ))}
 
             {/* Survivor Markers */}
-            {showSurvivors && filteredSurvivors.map((s) => (
+            {showSurvivors && filteredSurvivors.map((s, idx) => (
               <Marker
-                key={`surv-${s.id}`}
+                key={`surv-${s.id}-${idx}`}
                 position={[s.lat, s.lng]}
                 icon={createSurvivorIcon(s.priority)}
                 eventHandlers={{
